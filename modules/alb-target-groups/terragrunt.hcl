@@ -20,7 +20,7 @@ dependency "vpc" {
 
 
 inputs = {
-  #Application Load Balancer Target Group
+  #Application Load Balancer Target Group.
   alb-tg-name               = "web"
   target-group-port         = "80"
   target-group-protocol     = "HTTP"

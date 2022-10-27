@@ -9,7 +9,7 @@ resource "aws_vpc" "vpc" {
   }
  
 }
-#CREATING A INTERNET GATEWAY
+#CREATING A INTERNET GATEWAY.
 
 resource "aws_internet_gateway" "igw" {
   vpc_id               = aws_vpc.vpc.id
@@ -18,7 +18,7 @@ resource "aws_internet_gateway" "igw" {
 }
 }
 
-#PUBLIC SUBNET FROM A LIST
+#PUBLIC SUBNET FROM A LIST.
 resource "aws_subnet" "public-subnets" {
   availability_zone       = element(data.aws_availability_zones.azs.names,count.index)
   count                   = length(var.vpc-public-subnet-cidr)
@@ -30,7 +30,7 @@ resource "aws_subnet" "public-subnets" {
   }
 }
 
-#CREATING A PUBLIC ROUTES
+#CREATING A PUBLIC ROUTES.
 resource "aws_route_table" "public-routes" {
   vpc_id                  = aws_vpc.vpc.id
   route {
@@ -42,14 +42,14 @@ resource "aws_route_table" "public-routes" {
   }
 }
 
-#ASSOCIATE/LINK PUBLIC-ROUTE WITH PUBLIC-SUBNETS LIST
+#ASSOCIATE/LINK PUBLIC-ROUTE WITH PUBLIC-SUBNETS LIST.
 resource "aws_route_table_association" "public-association" {
   count                   = length(data.aws_availability_zones.azs.names)
   route_table_id          = aws_route_table.public-routes.id
   subnet_id               = element(aws_subnet.public-subnets.*.id, count.index)
 }
 
-#CREATING PRIVATE SUBNETS FROM A LIST
+#CREATING PRIVATE SUBNETS FROM A LIST.
 resource "aws_subnet" "private-subnets" {
   availability_zone       = element(data.aws_availability_zones.azs.names,count.index)
   count                   = length(var.vpc-private-subnet-cidr)
@@ -60,7 +60,7 @@ resource "aws_subnet" "private-subnets" {
   }
 }
 
-#CREATING EIP NAT-GATEWAY FOR NAT-GATEWAY REDUNDANCY
+#CREATING EIP NAT-GATEWAY FOR NAT-GATEWAY REDUNDANCY.
 resource "aws_eip" "eip-ngw" {
   count                  = var.total-nat-gateway-required
   tags = {
@@ -77,7 +77,7 @@ resource "aws_nat_gateway" "ngw" {
   }
 }
 
-#CREATING A PRIAVTE ROUTE-TABLE FOR PRIVATE-SUBNETS
+#CREATING A PRIAVTE ROUTE-TABLE FOR PRIVATE-SUBNETS.
 resource "aws_route_table" "private-routes" {
   count                = length(data.aws_availability_zones.azs.names)
   vpc_id               = aws_vpc.vpc.id

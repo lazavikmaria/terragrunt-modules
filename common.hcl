@@ -1,5 +1,5 @@
 locals {
-  product             = "Vertex2"
-  environment         = "dev2"
+  product             = ""
+  environment         = "dev"
 
 }

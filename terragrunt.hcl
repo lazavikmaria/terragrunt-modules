@@ -1,14 +1,14 @@
 
 locals {
-  # Automatically load account-level variables
+  # Automatically load account-level variables.
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
 
-  # Automatically load region-level variables
+  # Automatically load region-level variables.
   region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
 
   common_vars  = read_terragrunt_config(find_in_parent_folders("common.hcl"))
 
-  # Extract the variables we need for easy access
+  # Extract the variables we need for easy access.
     account_id   = local.account_vars.locals.aws_account_id
     access_key   = local.account_vars.locals.aws_access_key
     secret_key   = local.account_vars.locals.aws_secret_key

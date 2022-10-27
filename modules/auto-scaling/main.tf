@@ -1,4 +1,4 @@
-# #CREATING A NEW KEY PAIR AND EXPORTING OUR PUBLIC-KEY
+# #CREATING A NEW KEY PAIR AND EXPORTING OUR PUBLIC-KEY.
 # resource "aws_key_pair" "key-pair" {
 #   key_name          = var.key-name
 #   public_key        = var.public-key-file-name
@@ -25,10 +25,10 @@ resource "aws_autoscaling_group" "autoscaling-group" {
   max_size                  = var.max-size
   min_size                  = var.min-size
   health_check_grace_period = var.health-check-grace-period
-  #Group-Size or desired capacity
+  #Group-Size or desired capacity.
   desired_capacity          = var.desired-capacity
   force_delete              = var.force-delete
-  #A list of subnet IDs to launch resources in
+  #A list of subnet IDs to launch resources in.
   vpc_zone_identifier       = var.vpc-zone-identifier
   health_check_type         = var.health-check-type
   target_group_arns         = var.target-group-arns

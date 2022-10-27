@@ -50,7 +50,7 @@ inputs = {
   launch-configuration-root-block-volume-size        = "30"
   user-data                                          = file("../auto-scaling/scripts/user-data.sh")
 
-  #Auto-Scaling
+  #Auto-Scaling.
 
   autoscaling-group-name                            = "ec2-asg"
   max-size                                          = "2"
@@ -58,7 +58,7 @@ inputs = {
   health-check-grace-period                         = "300"
   desired-capacity                                  = "2"
   force-delete                                      = "true"
-  #A list of subnet IDs to launch resources in
+  #A list of subnet IDs to launch resources in.
   vpc-zone-identifier                               = dependency.vpc.outputs.public-subnet-ids
   target-group-arns                                 = [dependency.alb-target-groups.outputs.target-group-arns]
   health-check-type                                 = "ELB"

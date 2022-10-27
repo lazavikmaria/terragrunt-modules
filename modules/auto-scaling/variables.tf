@@ -1,4 +1,4 @@
-#LAUNCH CONFIGURATION VARIABLES
+#LAUNCH CONFIGURATION VARIABLES.
 
 # variable "key-name" {
 #   default = ""
@@ -43,7 +43,7 @@ variable "user-data" {
   
 }
 
-#AUTO-SCALING VARIABLES
+#AUTO-SCALING VARIABLES.
 
 variable "autoscaling-group-name" {
   default = ""
